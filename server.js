@@ -5,7 +5,7 @@ const connectDB = require("./db");
 const bodyParser = require("body-parser");
 
 connectDB();
-app.use(cors());
+app.use(cors({ origin: "https://assig-client.vercel.app/" }));
 app.use(bodyParser.json());
 app.use("/auth", require("./routes/auth"));
 app.listen(5000);
