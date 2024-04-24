@@ -187,4 +187,18 @@ router.post("/getsublist", finduser, async (req, res) => {
   }
 });
 
+router.post("/getsubpack", finduser, async (req, res) => {
+  try {
+    const user = await User.findById(req.user);
+    return res.json({
+      success: true,
+      subDate: user.subcribtion.subDate,
+      expDate: user.subcribtion.expDate,
+    });
+  } catch (err) {
+    console.log(err);
+    return res.json({ success: false });
+  }
+});
+
 module.exports = router;
